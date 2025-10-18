@@ -1,14 +1,12 @@
-# 🧠 open-analysis · AI Data Analysis Library
-
-[![PyPI version](https://img.shields.io/pypi/v/open-analysis.svg?color=7c5cff&label=PyPI%20Version)](https://pypi.org/project/open-analysis/)
+[![PyPI version](https://img.shields.io/pypi/v/talking_data.svg?color=7c5cff&label=PyPI%20Version)](https://pypi.org/project/talking_data/)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Downloads](https://static.pepy.tech/badge/open-analysis)](https://pepy.tech/project/open-analysis)
+[![Downloads](https://static.pepy.tech/badge/talking_data)](https://pepy.tech/project/talking_data)
 [![Docs](https://img.shields.io/badge/Docs-View%20Full%20Documentation-9f8cff.svg)](https://your-docs-url.com)
 
 ---
-
-**`open-analysis`** is a lightweight, multi-provider **AI Data Analysis** library that performs SQL-based reasoning directly on your `pandas.DataFrame` using **OpenAI**, **Groq**, or **Google Gemini** models.
+## 🚀 talking_data
+**`talking_data`** is a lightweight, multi-provider **AI Data Analysis** library that performs SQL-based reasoning directly on your `pandas.DataFrame` using **OpenAI**, **Groq**, or **Google Gemini** models.
 
 It automatically:
 - 🧩 Generates SQL queries from plain English questions
@@ -21,13 +19,13 @@ It automatically:
 ## 🚀 Installation
 
 ```bash
-pip install open-analysis
+pip install talking_data
 ```
 
 Once installed, import it in your Python project:
 
 ```python
-from open_analysis import open_analysis
+from talking_data import open_analysis
 ```
 
 ---
@@ -35,7 +33,7 @@ from open_analysis import open_analysis
 ## ⚡ Quickstart Example
 
 ```python
-from open_analysis import open_analysis
+from talking_data import open_analysis
 import pandas as pd
 
 # Sample DataFrame
@@ -281,8 +279,8 @@ in the Software without restriction...
 
 ## 🌐 Links
 
-- 📦 **PyPI**: [https://pypi.org/project/open-analysis](https://pypi.org/project/open-analysis)
-- 💻 **GitHub**: [https://github.com/yourusername/open-analysis](https://github.com/yourusername/open-analysis)
+- 📦 **PyPI**: [https://pypi.org/project/talking_data](https://pypi.org/project/talking_data)
+- 💻 **GitHub**: [https://github.com/yourusername/talking_data](https://github.com/yourusername/talking_data)
 - 📖 **Documentation**: [https://your-docs-url.com](https://your-docs-url.com)
 
 ---
