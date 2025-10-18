@@ -1,6 +1,6 @@
 [![PyPI version](https://img.shields.io/pypi/v/talkingdata.svg?color=7c5cff&label=PyPI%20Version)](https://pypi.org/project/talkingdata/)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/mabdullah40/Talking-Data/blob/main/LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-View%20Full%20Documentation-9f8cff.svg)](https://mabdullah40.github.io/Talking-Data/)
 ---
 ## 🚀 Talking data
