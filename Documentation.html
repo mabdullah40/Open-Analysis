@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>open-analysis · Documentation</title>
+  <meta name="description" content="open-analysis: A lightweight, multi-provider AI Data Analysis library using SQL reasoning on pandas DataFrames with Gemini, Groq, and OpenAI.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>window.addEventListener('DOMContentLoaded',()=>hljs.highlightAll());</script>
+
+  <style>
+    :root {
+      --bg:#0e1116;--text:#e7ecf3;--muted:#9aa1b4;
+      --panel:#171b24;--border:#2c3344;
+      --brand:#7c5cff;--brand2:#9f8cff;
+      --ok:#16c964;--warn:#f5a524;--err:#f31260;
+      --code:#0b0f17;--shadow:0 8px 24px rgba(0,0,0,.25);
+    }
+    .theme-light{
+      --bg:#f9fafb;--text:#1b1e25;--muted:#4b5563;
+      --panel:#fff;--border:#e5e7eb;
+      --brand:#5b21b6;--brand2:#7c3aed;--code:#0b0f17;
+    }
+    body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--text);line-height:1.6;}
+    a{color:var(--brand2);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    .layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh;}
+    aside{background:var(--panel);border-right:1px solid var(--border);padding:18px;position:sticky;top:0;height:100vh;overflow-y:auto;}
+    .brand{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+    .brand .logo{background:var(--brand);width:38px;height:38px;display:grid;place-items:center;border-radius:10px;font-weight:700;color:#fff;}
+    .brand h1{font-size:16px;margin:0;}
+    .brand small{color:var(--muted);display:block;margin-top:2px;}
+    nav .title{margin-top:12px;font-size:12px;text-transform:uppercase;color:var(--muted);}
+    nav a{display:block;padding:8px 10px;margin:4px 0;border-radius:6px;}
+    nav a.active,nav a:hover{background:rgba(124,92,255,.15);}
+    main{padding:28px;max-width:1100px;margin:auto;}
+    h2{margin-top:44px;font-size:24px;}
+    h3{margin-top:24px;font-size:18px;}
+    pre{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:14px;overflow:auto;position:relative;}
+    .copy{position:absolute;right:8px;top:8px;font-size:12px;padding:4px 8px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid var(--border);cursor:pointer;}
+    .copy.copied{color:var(--ok);border-color:var(--ok);}
+    table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;}
+    th,td{padding:8px 10px;border-bottom:1px solid var(--border);}
+    th{color:var(--muted);text-align:left;}
+    .callout{border-left:3px solid var(--brand);background:rgba(124,92,255,.1);padding:10px 12px;border-radius:6px;margin:14px 0;}
+    .footer{text-align:center;margin:48px 0;color:var(--muted);font-size:13px;}
+    #themeToggle{position:fixed;bottom:16px;left:16px;padding:8px 10px;border:none;border-radius:8px;background:var(--brand);color:#fff;cursor:pointer;box-shadow:var(--shadow);}
+    @media(max-width:900px){.layout{grid-template-columns:1fr;}aside{position:relative;height:auto;}}
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <div class="brand">
+      <div class="logo">OA</div>
+      <div><h1>open-analysis</h1><small>v1.5.0</small></div>
+    </div>
+    <nav>
+      <div class="title">Overview</div>
+      <a href="#intro">Introduction</a>
+      <a href="#install">Installation</a>
+      <a href="#usage">Quickstart</a>
+      <div class="title">API</div>
+      <a href="#function">Function Reference</a>
+      <a href="#params">Parameters</a>
+      <a href="#return">Return Structure</a>
+      <a href="#logs">Logging</a>
+      <div class="title">Providers</div>
+      <a href="#providers">Gemini · Groq · OpenAI</a>
+      <div class="title">More</div>
+      <a href="#faq">FAQ</a>
+      <a href="#changelog">Changelog</a>
+      <a href="#license">License</a>
+    </nav>
+  </aside>
+
+  <main>
+    <section id="intro">
+      <h2>Introduction</h2>
+      <p><strong>open-analysis</strong> is a PyPI-distributed, lightweight AI-assisted data analysis package.  
+      It allows you to perform instant insights and KPI exploration from any <code>pandas.DataFrame</code> by asking natural-language questions.  
+      The package uses <b>LLM-powered SQL reasoning</b> to generate and execute queries automatically via <b>DuckDB</b>.</p>
+      <ul>
+        <li>🚀 Supports <b>OpenAI</b>, <b>Groq</b>, and <b>Google Gemini</b></li>
+        <li>🧠 Automatically builds SQL queries from your data</li>
+        <li>📊 Summarizes results in text and HTML insights</li>
+        <li>🧩 Handles lazy dependency installation</li>
+      </ul>
+      <div class="callout">No SQL or ML experience required — just write your question, and <code>open_analysis()</code> handles the rest.</div>
+    </section>
+
+    <section id="install">
+      <h2>Installation</h2>
+      <pre><button class="copy">Copy</button><code class="language-bash">pip install open-analysis</code></pre>
+      <p>After installation, import the library:</p>
+      <pre><button class="copy">Copy</button><code class="language-python">from open_analysis import open_analysis</code></pre>
+      <h3>Dependencies</h3>
+      <ul>
+        <li><b>pandas</b>, <b>duckdb</b>, <b>html2text</b> – core analytical dependencies</li>
+        <li><b>openai</b>, <b>groq</b>, <b>google-genai</b> – LLM provider SDKs (auto-installed when needed)</li>
+      </ul>
+      <div class="callout">The library lazily installs missing dependencies on first use — no need to manually manage them.</div>
+    </section>
+
+    <section id="usage">
+      <h2>Quickstart</h2>
+      <pre><button class="copy">Copy</button><code class="language-python">from open_analysis import open_analysis
+import pandas as pd
+
+# Example DataFrame
+df = pd.DataFrame({
+    "region": ["East", "West", "North", "South"],
+    "sales": [1200, 800, 950, 1100],
+    "profit": [200, 100, 150, 180]
+})
+
+result = open_analysis(
+    df=df,
+    model_provider="openai",
+    api_key="YOUR_API_KEY",
+    question="Which region has the highest profit margin?",
+    query_context="Profit margin = profit / sales * 100",
+    log_level="detailed"
+)
+
+print("SQL Query:", result["sql_query"])
+print(result["query_result"])
+print("Insights:", result["plain_text_output"])</code></pre>
+    </section>
+
+    <section id="function">
+      <h2>Function Reference</h2>
+      <pre><button class="copy">Copy</button><code class="language-python">open_analysis(
+    df: pd.DataFrame,
+    model_provider: str = "openai",
+    model: str = None,
+    api_key: str = None,
+    question: str = "Do a data analysis on the dataframe and give me insights?",
+    temperature_one: float = 0.2,
+    temperature_two: float = 0.7,
+    max_completion_tokens: int = 1024,
+    output_layer_context: str = None,
+    query_context: str = None,
+    log_level: str = "basic"
+) -> dict</code></pre>
+      <p>Executes a two-step process:</p>
+      <ol>
+        <li>Generates an SQL query from the DataFrame preview and question.</li>
+        <li>Runs the query and summarizes results as HTML and text.</li>
+      </ol>
+    </section>
+
+    <section id="params">
+      <h2>Parameters</h2>
+      <table>
+        <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+        <tr><td><code>df</code></td><td>pandas.DataFrame</td><td>The dataset to analyze.</td></tr>
+        <tr><td><code>model_provider</code></td><td>str</td><td>LLM source — "gemini", "groq", or "openai".</td></tr>
+        <tr><td><code>model</code></td><td>str</td><td>Optional model name (defaults depend on provider).</td></tr>
+        <tr><td><code>api_key</code></td><td>str</td><td>API key for the chosen provider.</td></tr>
+        <tr><td><code>question</code></td><td>str</td><td>Natural-language prompt to describe your desired analysis.</td></tr>
+        <tr><td><code>temperature_one</code></td><td>float</td><td>Controls creativity for SQL generation (lower = deterministic).</td></tr>
+        <tr><td><code>temperature_two</code></td><td>float</td><td>Controls creativity for summarization.</td></tr>
+        <tr><td><code>max_completion_tokens</code></td><td>int</td><td>Groq/OpenAI max tokens for completions.</td></tr>
+        <tr><td><code>output_layer_context</code></td><td>str</td><td>Optional context or notes for final summary generation.</td></tr>
+        <tr><td><code>query_context</code></td><td>str</td><td>KPI definitions or formulas to guide SQL generation.</td></tr>
+        <tr><td><code>log_level</code></td><td>str</td><td>"none" | "basic" | "detailed" | "debug". Controls verbosity.</td></tr>
+      </table>
+    </section>
+
+    <section id="return">
+      <h2>Return Structure</h2>
+      <pre><button class="copy">Copy</button><code class="language-json">{
+  "provider": "openai",
+  "model": "gpt-4o",
+  "sql_query": "SELECT region, SUM(profit)/SUM(sales)*100 AS margin FROM df GROUP BY region",
+  "query_result": "<pandas.DataFrame>",
+  "html_output": "<section>...</section>",
+  "plain_text_output": "East region has the highest profit margin (16.7%)",
+  "logs": [
+    "Initializing provider: openai",
+    "Starting SQL generation...",
+    "Generated SQL: SELECT ...",
+    "Starting insights generation...",
+    "Summary generated successfully."
+  ]
+}</code></pre>
+    </section>
+
+    <section id="logs">
+      <h2>Logging Levels</h2>
+      <ul>
+        <li><strong>none</strong> — Returns no logs.</li>
+        <li><strong>basic</strong> — Only key steps (init, SQL done, summary done).</li>
+        <li><strong>detailed</strong> — Adds generated SQL and intermediate notes.</li>
+        <li><strong>debug</strong> — Includes tracebacks and raw prompts.</li>
+      </ul>
+      <div class="callout">Logs are returned as <code>list[str]</code> in <code>result["logs"]</code>.</div>
+    </section>
+
+    <section id="providers">
+      <h2>Providers & Default Models</h2>
+      <table>
+        <tr><th>Provider</th><th>Default Model</th><th>SDK</th></tr>
+        <tr><td>OpenAI</td><td><code>gpt-4o</code></td><td><code>openai</code></td></tr>
+        <tr><td>Groq</td><td><code>llama-3.3-70b-versatile</code></td><td><code>groq</code></td></tr>
+        <tr><td>Google Gemini</td><td><code>gemini-2.0-flash</code></td><td><code>google-genai</code></td></tr>
+      </table>
+      <p>The function detects provider type automatically and loads its SDK lazily.</p>
+    </section>
+
+    <section id="faq">
+      <h2>FAQ</h2>
+      <h3>Do I need to install dependencies manually?</h3>
+      <p>No. The library auto-installs missing ones at runtime.</p>
+      <h3>Can I use it with local/offline models?</h3>
+      <p>Currently, only cloud APIs (Gemini, Groq, OpenAI) are supported.</p>
+      <h3>Does it modify the original DataFrame?</h3>
+      <p>No, it only registers it temporarily in DuckDB for query execution.</p>
+      <h3>Can I format the HTML output?</h3>
+      <p>Yes — the <code>html_output</code> is safe to embed in any web app or notebook renderer.</p>
+    </section>
+
+    <section id="changelog">
+      <h2>Changelog</h2>
+      <ul>
+        <li><strong>1.5.0</strong> — Added lazy dependency import, unified logging, and provider abstraction.</li>
+        <li><strong>1.4.0</strong> — Logs now returned in the output dictionary.</li>
+        <li><strong>1.3.0</strong> — Added Gemini and Groq support.</li>
+        <li><strong>1.0.0</strong> — Initial OpenAI-based release.</li>
+      </ul>
+    </section>
+
+    <section id="license">
+      <h2>License</h2>
+      <pre><button class="copy">Copy</button><code class="language-text">MIT License
+
+Copyright (c)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction...</code></pre>
+    </section>
+
+    <p class="footer">Made with ❤️ by [Your Name] · open-analysis v1.5.0 · MIT License</p>
+  </main>
+</div>
+
+<button id="themeToggle">🌓</button>
+
+<script>
+  const themeToggle=document.getElementById('themeToggle');
+  const hljsTheme=document.getElementById('hljs-theme');
+  function setTheme(t){if(t==='light'){document.body.classList.add('theme-light');localStorage.setItem('theme','light');hljsTheme.href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css';}else{document.body.classList.remove('theme-light');localStorage.setItem('theme','dark');hljsTheme.href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css';}}
+  setTheme(localStorage.getItem('theme')||'dark');
+  themeToggle.onclick=()=>setTheme(document.body.classList.contains('theme-light')?'dark':'light');
+  document.querySelectorAll('.copy').forEach(btn=>{
+    btn.onclick=async()=>{
+      const code=btn.nextElementSibling.innerText;
+      await navigator.clipboard.writeText(code);
+      btn.classList.add('copied');btn.textContent='Copied!';
+      setTimeout(()=>{btn.classList.remove('copied');btn.textContent='Copy';},1200);
+    };
+  });
+  const links=document.querySelectorAll('aside nav a');
+  const sections=[...links].map(a=>document.querySelector(a.getAttribute('href')));
+  window.addEventListener('scroll',()=>{
+    const y=window.scrollY+100;
+    sections.forEach((s,i)=>{
+      if(!s)return;
+      if(s.offsetTop<=y&&s.offsetTop+s.offsetHeight>y){
+        links.forEach(l=>l.classList.remove('active'));
+        links[i].classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
