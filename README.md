@@ -2,7 +2,7 @@
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Downloads](https://static.pepy.tech/badge/talking_data)](https://pepy.tech/project/talking_data)
-[![Docs](https://img.shields.io/badge/Docs-View%20Full%20Documentation-9f8cff.svg)]([https://your-docs-url.com](https://mabdullah40.github.io/Open-Analysis)
+[![Docs](https://img.shields.io/badge/Docs-View%20Full%20Documentation-9f8cff.svg)](https://mabdullah40.github.io/Open-Analysis)
 
 ---
 ## 🚀 talking_data
