@@ -1,4 +1,4 @@
-[![PyPI version](https://img.shields.io/pypi/v/talking_data.svg?color=7c5cff&label=PyPI%20Version)](https://pypi.org/project/talking_data/)
+[![PyPI version](https://img.shields.io/pypi/v/talking_data.svg?color=7c5cff&label=PyPI%20Version)](https://pypi.org/project/talkingdata/)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Downloads](https://static.pepy.tech/badge/talking_data)](https://pepy.tech/project/talking_data)
