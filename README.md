@@ -287,4 +287,4 @@ in the Software without restriction...
 
 ---
 
-Made with ❤ by [Your Name]
+Made with ❤ by Mohammad Abdullah
