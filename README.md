@@ -1,7 +1,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/talkingdata.svg?color=7c5cff&label=PyPI%20Version)](https://pypi.org/project/talkingdata/)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Docs](https://img.shields.io/badge/Docs-View%20Full%20Documentation-9f8cff.svg)](https://mabdullah40.github.io/Open-Analysis)
+[![Docs](https://img.shields.io/badge/Docs-View%20Full%20Documentation-9f8cff.svg)](https://mabdullah40.github.io/Talking-Data/)
 ---
 ## 🚀 talking_data
 **`talking_data`** is a lightweight, multi-provider **AI Data Analysis** library that performs SQL-based reasoning directly on your `pandas.DataFrame` using **OpenAI**, **Groq**, or **Google Gemini** models.
