@@ -3,8 +3,8 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-View%20Full%20Documentation-9f8cff.svg)](https://mabdullah40.github.io/Talking-Data/)
 ---
-## 🚀 talking_data
-**`talking_data`** is a lightweight, multi-provider **AI Data Analysis** library that performs SQL-based reasoning directly on your `pandas.DataFrame` using **OpenAI**, **Groq**, or **Google Gemini** models.
+## 🚀 Talking data
+**`Talking data`** is a lightweight, multi-provider **AI Data Analysis** library that performs SQL-based reasoning directly on your `pandas.DataFrame` using **OpenAI**, **Groq**, or **Google Gemini** models.
 
 It automatically:
 - 🧩 Generates SQL queries from plain English questions
@@ -277,9 +277,9 @@ in the Software without restriction...
 
 ## 🌐 Links
 
-- 📦 **PyPI**: [https://pypi.org/project/talking_data](https://pypi.org/project/talking_data)
-- 💻 **GitHub**: [https://github.com/yourusername/talking_data](https://github.com/yourusername/talking_data)
-- 📖 **Documentation**: [https://your-docs-url.com](https://your-docs-url.com)
+- 📦 **PyPI**: [https://pypi.org/project/talkingdata](https://pypi.org/project/talkingdata)
+- 💻 **GitHub**: [https://github.com/mabdullah40/Talking-Data/](https://github.com/mabdullah40/Talking-Data/)
+- 📖 **Documentation**: [https://mabdullah40.github.io/Talking-Data/](https://mabdullah40.github.io/Talking-Data/)
 
 ---
 
