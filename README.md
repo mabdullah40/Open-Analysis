@@ -175,7 +175,7 @@ result = open_analysis(
 print(result["plain_text_output"])
 ```
 
----
+<!-- ---
 
 ## 💡 How It Works
 
@@ -185,7 +185,7 @@ print(result["plain_text_output"])
 
 ### 2. Summarization Layer
 - The model summarizes the query output.
-- Returns both human-readable plain text and styled HTML.
+- Returns both human-readable plain text and styled HTML. -->
 
 ---
 
@@ -228,10 +228,15 @@ SELECT region, SUM(profit)/SUM(sales)*100 AS margin FROM df GROUP BY region ORDE
 
 | Version | Highlights |
 |---------|------------|
-| 1.5.0 | Added log levels, lazy import, unified provider handling |
-| 1.4.0 | Logs returned in results |
-| 1.3.0 | Added Gemini and Groq support |
-| 1.0.0 | Initial OpenAI-based release |
+| 0.9.0 | Improved loging, response behaviour |
+| 0.8.0 | Improved internal working |
+| 0.7.0 | Improved response behaviour |
+| 0.6.0 | Improved its functionaly |
+| 0.5.0 | Added log levels, lazy import, unified provider handling |
+| 0.4.0 | Logs returned in results |
+| 0.3.0 | Added Gemini and Groq support |
+| 0.2.0 | Improved error-handling |
+| 0.0.0 | Initial OpenAI-based release |
 
 ---
 
@@ -266,7 +271,7 @@ This project is licensed under the MIT License.
 ```
 MIT License
 
-Copyright (...)
+Copyright (2025)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
