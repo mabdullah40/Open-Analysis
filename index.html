@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>open-analysis · Documentation</title>
-  <meta name="description" content="open-analysis: A lightweight, multi-provider AI Data Analysis library using SQL reasoning on pandas DataFrames with Gemini, Groq, and OpenAI.">
+  <title>Talking Data · Documentation</title>
+  <meta name="description" content="Talking Data: Multi-provider AI Data Analysis library using SQL reasoning on pandas DataFrames with OpenAI, Groq, and Google Gemini.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -50,66 +50,65 @@
     @media(max-width:900px){.layout{grid-template-columns:1fr;}aside{position:relative;height:auto;}}
   </style>
 </head>
+
 <body>
 <div class="layout">
   <aside>
     <div class="brand">
-      <div class="logo">OA</div>
-      <div><h1>open-analysis</h1><small>v1.5.0</small></div>
+      <div class="logo">TD</div>
+      <div><h1>Talking Data</h1><small>v1.0.0</small></div>
     </div>
     <nav>
       <div class="title">Overview</div>
       <a href="#intro">Introduction</a>
       <a href="#install">Installation</a>
-      <a href="#usage">Quickstart</a>
+      <a href="#quickstart">Quickstart</a>
+      <a href="#examples">Examples</a>
       <div class="title">API</div>
       <a href="#function">Function Reference</a>
       <a href="#params">Parameters</a>
       <a href="#return">Return Structure</a>
       <a href="#logs">Logging</a>
       <div class="title">Providers</div>
-      <a href="#providers">Gemini · Groq · OpenAI</a>
+      <a href="#providers">Supported Providers</a>
       <div class="title">More</div>
       <a href="#faq">FAQ</a>
-      <a href="#changelog">Changelog</a>
+      <a href="#changelog">Version History</a>
       <a href="#license">License</a>
     </nav>
   </aside>
 
   <main>
     <section id="intro">
-      <h2>Introduction</h2>
-      <p><strong>open-analysis</strong> is a PyPI-distributed, lightweight AI-assisted data analysis package.  
-      It allows you to perform instant insights and KPI exploration from any <code>pandas.DataFrame</code> by asking natural-language questions.  
-      The package uses <b>LLM-powered SQL reasoning</b> to generate and execute queries automatically via <b>DuckDB</b>.</p>
+      <p>
+        <img src="https://img.shields.io/pypi/v/talkingdata.svg?color=7c5cff&label=PyPI%20Version" alt="PyPI Version">
+        <img src="https://img.shields.io/badge/python-3.8%2B-blue.svg" alt="Python">
+        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License">
+        <a href="https://mabdullah40.github.io/Talking-Data/"><img src="https://img.shields.io/badge/Docs-View%20Full%20Documentation-9f8cff.svg" alt="Docs"></a>
+      </p>
+      <h2>🚀 Talking Data</h2>
+      <p><strong>Talking Data</strong> is a lightweight, multi-provider <b>AI Data Analysis</b> library that performs SQL-based reasoning directly on your <code>pandas.DataFrame</code> using <b>OpenAI</b>, <b>Groq</b>, or <b>Google Gemini</b> models.</p>
       <ul>
-        <li>🚀 Supports <b>OpenAI</b>, <b>Groq</b>, and <b>Google Gemini</b></li>
-        <li>🧠 Automatically builds SQL queries from your data</li>
-        <li>📊 Summarizes results in text and HTML insights</li>
-        <li>🧩 Handles lazy dependency installation</li>
+        <li>🧩 Generates SQL queries from plain English questions</li>
+        <li>🚀 Executes them locally using DuckDB</li>
+        <li>🧠 Summarizes results as insightful text or HTML</li>
+        <li>⚙ Installs missing dependencies automatically</li>
       </ul>
-      <div class="callout">No SQL or ML experience required — just write your question, and <code>open_analysis()</code> handles the rest.</div>
+      <div class="callout">No SQL experience required — just write a question, and <code>open_analysis()</code> handles everything.</div>
     </section>
 
     <section id="install">
       <h2>Installation</h2>
-      <pre><button class="copy">Copy</button><code class="language-bash">pip install open-analysis</code></pre>
-      <p>After installation, import the library:</p>
-      <pre><button class="copy">Copy</button><code class="language-python">from open_analysis import open_analysis</code></pre>
-      <h3>Dependencies</h3>
-      <ul>
-        <li><b>pandas</b>, <b>duckdb</b>, <b>html2text</b> – core analytical dependencies</li>
-        <li><b>openai</b>, <b>groq</b>, <b>google-genai</b> – LLM provider SDKs (auto-installed when needed)</li>
-      </ul>
-      <div class="callout">The library lazily installs missing dependencies on first use — no need to manually manage them.</div>
+      <pre><button class="copy">Copy</button><code class="language-bash">pip install talking_data</code></pre>
+      <p>Once installed, import it in your Python project:</p>
+      <pre><button class="copy">Copy</button><code class="language-python">from talking_data import open_analysis</code></pre>
     </section>
 
-    <section id="usage">
-      <h2>Quickstart</h2>
-      <pre><button class="copy">Copy</button><code class="language-python">from open_analysis import open_analysis
+    <section id="quickstart">
+      <h2>⚡ Quickstart Example</h2>
+      <pre><button class="copy">Copy</button><code class="language-python">from talking_data import open_analysis
 import pandas as pd
 
-# Example DataFrame
 df = pd.DataFrame({
     "region": ["East", "West", "North", "South"],
     "sales": [1200, 800, 950, 1100],
@@ -120,7 +119,7 @@ result = open_analysis(
     df=df,
     model_provider="openai",
     api_key="YOUR_API_KEY",
-    question="Which region has the highest profit margin?",
+    question="Which region performs best by profit margin?",
     query_context="Profit margin = profit / sales * 100",
     log_level="detailed"
 )
@@ -130,8 +129,83 @@ print(result["query_result"])
 print("Insights:", result["plain_text_output"])</code></pre>
     </section>
 
+    <section id="examples">
+      <h2>🧠 Examples by Provider</h2>
+
+      <h3>1️⃣ OpenAI Example</h3>
+      <pre><button class="copy">Copy</button><code class="language-python">result = open_analysis(
+    df=df,
+    model_provider="openai",
+    api_key="YOUR_OPENAI_API_KEY",
+    question="Which region has the highest total sales?",
+)
+print(result["plain_text_output"])</code></pre>
+
+      <h3>2️⃣ Groq Example</h3>
+      <pre><button class="copy">Copy</button><code class="language-python">result = open_analysis(
+    df=df,
+    model_provider="groq",
+    api_key="YOUR_GROQ_API_KEY",
+    question="Compare profit and sales correlation by region."
+)
+print(result["plain_text_output"])</code></pre>
+
+      <h3>3️⃣ Gemini Example</h3>
+      <pre><button class="copy">Copy</button><code class="language-python">result = open_analysis(
+    df=df,
+    model_provider="gemini",
+    api_key="YOUR_GEMINI_API_KEY",
+    question="Find the top 2 regions by total sales."
+)
+print(result["plain_text_output"])</code></pre>
+
+      <div class="callout">
+        Each provider uses its own SDK and default model automatically.  
+        You can override the model name via the <code>model</code> parameter.
+      </div>
+    </section>
+    <section id="example-output">
+        <h2>🧠 Example Output</h2>
+
+        <p>Here’s what a typical <code>open_analysis()</code> call returns — a mix of plain text insights, SQL, and HTML output that you can render anywhere:</p>
+
+        <h3>Plain Text Output</h3>
+        <pre><button class="copy">Copy</button><code class="language-text">Region East has the highest profit margin of 16.7%, followed by South at 16.3%.</code></pre>
+
+        <h3>Generated SQL</h3>
+        <pre><button class="copy">Copy</button><code class="language-sql">SELECT region, SUM(profit)/SUM(sales)*100 AS margin 
+            FROM df 
+            GROUP BY region 
+            ORDER BY margin DESC;</code></pre>
+
+        <h3>HTML Output</h3>
+        <pre><button class="copy">Copy</button><code class="language-html">&lt;section&gt;
+    &lt;h3&gt;Regional Profit Margin Insights&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;East region leads with a 16.7% margin&lt;/li&gt;
+        &lt;li&gt;South follows closely at 16.3%&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;/section&gt;</code></pre>
+
+        <div class="callout">
+            💡 The <code>html_output</code> field is ideal for embedding in dashboards or notebooks.  
+            The <code>plain_text_output</code> is optimized for chat or console interfaces.  
+            Both are auto-generated.
+        </div>
+        </section>
+    <section id="providers">
+      <h2>🧩 Supported Providers</h2>
+      <table>
+        <tr><th>Provider</th><th>Default Model</th><th>SDK Dependency</th></tr>
+        <tr><td>🧠 OpenAI</td><td><code>gpt-4o</code></td><td><code>openai</code></td></tr>
+        <tr><td>⚙ Groq</td><td><code>llama-3.3-70b-versatile</code></td><td><code>groq</code></td></tr>
+        <tr><td>🌐 Google Gemini</td><td><code>gemini-2.0-flash</code></td><td><code>google-genai</code></td></tr>
+      </table>
+      <p>The library detects and loads each SDK lazily at runtime — missing packages are installed automatically.</p>
+    </section>
+
     <section id="function">
-      <h2>Function Reference</h2>
+      <h2>🧩 Function Reference</h2>
       <pre><button class="copy">Copy</button><code class="language-python">open_analysis(
     df: pd.DataFrame,
     model_provider: str = "openai",
@@ -145,106 +219,87 @@ print("Insights:", result["plain_text_output"])</code></pre>
     query_context: str = None,
     log_level: str = "basic"
 ) -> dict</code></pre>
-      <p>Executes a two-step process:</p>
+
+      <p>This function performs a two-stage process:</p>
       <ol>
-        <li>Generates an SQL query from the DataFrame preview and question.</li>
-        <li>Runs the query and summarizes results as HTML and text.</li>
+        <li><strong>SQL Generation</strong> — Converts your natural-language question into an executable SQL query.</li>
+        <li><strong>Insight Summarization</strong> — Executes the query on DuckDB and summarizes the result in both HTML and text formats.</li>
       </ol>
     </section>
 
     <section id="params">
-      <h2>Parameters</h2>
+      <h2>🧾 Parameters</h2>
       <table>
         <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
-        <tr><td><code>df</code></td><td>pandas.DataFrame</td><td>The dataset to analyze.</td></tr>
-        <tr><td><code>model_provider</code></td><td>str</td><td>LLM source — "gemini", "groq", or "openai".</td></tr>
-        <tr><td><code>model</code></td><td>str</td><td>Optional model name (defaults depend on provider).</td></tr>
-        <tr><td><code>api_key</code></td><td>str</td><td>API key for the chosen provider.</td></tr>
-        <tr><td><code>question</code></td><td>str</td><td>Natural-language prompt to describe your desired analysis.</td></tr>
-        <tr><td><code>temperature_one</code></td><td>float</td><td>Controls creativity for SQL generation (lower = deterministic).</td></tr>
-        <tr><td><code>temperature_two</code></td><td>float</td><td>Controls creativity for summarization.</td></tr>
-        <tr><td><code>max_completion_tokens</code></td><td>int</td><td>Groq/OpenAI max tokens for completions.</td></tr>
-        <tr><td><code>output_layer_context</code></td><td>str</td><td>Optional context or notes for final summary generation.</td></tr>
-        <tr><td><code>query_context</code></td><td>str</td><td>KPI definitions or formulas to guide SQL generation.</td></tr>
-        <tr><td><code>log_level</code></td><td>str</td><td>"none" | "basic" | "detailed" | "debug". Controls verbosity.</td></tr>
+        <tr><td><code>df</code></td><td><code>pandas.DataFrame</code></td><td>Dataset to analyze.</td></tr>
+        <tr><td><code>model_provider</code></td><td><code>str</code></td><td>Provider name: "gemini", "groq", or "openai".</td></tr>
+        <tr><td><code>model</code></td><td><code>str</code></td><td>Optional model override for fine-tuning provider behavior.</td></tr>
+        <tr><td><code>api_key</code></td><td><code>str</code></td><td>API key for the selected provider.</td></tr>
+        <tr><td><code>question</code></td><td><code>str</code></td><td>Natural language query describing what to analyze.</td></tr>
+        <tr><td><code>query_context</code></td><td><code>str</code></td><td>Optional context (like KPI formula or definition).</td></tr>
+        <tr><td><code>temperature_one</code></td><td><code>float</code></td><td>Controls creativity for SQL generation.</td></tr>
+        <tr><td><code>temperature_two</code></td><td><code>float</code></td><td>Controls summarization creativity.</td></tr>
+        <tr><td><code>log_level</code></td><td><code>str</code></td><td>"none" | "basic" | "detailed" | "debug".</td></tr>
       </table>
     </section>
 
     <section id="return">
-      <h2>Return Structure</h2>
+      <h2>📤 Return Structure</h2>
       <pre><button class="copy">Copy</button><code class="language-json">{
   "provider": "openai",
   "model": "gpt-4o",
-  "sql_query": "SELECT region, SUM(profit)/SUM(sales)*100 AS margin FROM df GROUP BY region",
+  "sql_query": "SELECT region, SUM(profit)/SUM(sales)*100 AS margin FROM df GROUP BY region ORDER BY margin DESC",
   "query_result": "<pandas.DataFrame>",
   "html_output": "<section>...</section>",
   "plain_text_output": "East region has the highest profit margin (16.7%)",
-  "logs": [
-    "Initializing provider: openai",
-    "Starting SQL generation...",
-    "Generated SQL: SELECT ...",
-    "Starting insights generation...",
-    "Summary generated successfully."
-  ]
+  "logs": [...]
 }</code></pre>
+      <div class="callout">You can access <code>result["html_output"]</code> for a formatted HTML summary suitable for embedding in web apps or notebooks.</div>
     </section>
 
     <section id="logs">
-      <h2>Logging Levels</h2>
+      <h2>🪵 Logging Levels</h2>
       <ul>
-        <li><strong>none</strong> — Returns no logs.</li>
-        <li><strong>basic</strong> — Only key steps (init, SQL done, summary done).</li>
-        <li><strong>detailed</strong> — Adds generated SQL and intermediate notes.</li>
-        <li><strong>debug</strong> — Includes tracebacks and raw prompts.</li>
+        <li><b>none</b> — No logs returned.</li>
+        <li><b>basic</b> — Shows only essential steps.</li>
+        <li><b>detailed</b> — Includes SQL and phase transitions.</li>
+        <li><b>debug</b> — Includes tracebacks and full prompt data.</li>
       </ul>
-      <div class="callout">Logs are returned as <code>list[str]</code> in <code>result["logs"]</code>.</div>
-    </section>
-
-    <section id="providers">
-      <h2>Providers & Default Models</h2>
-      <table>
-        <tr><th>Provider</th><th>Default Model</th><th>SDK</th></tr>
-        <tr><td>OpenAI</td><td><code>gpt-4o</code></td><td><code>openai</code></td></tr>
-        <tr><td>Groq</td><td><code>llama-3.3-70b-versatile</code></td><td><code>groq</code></td></tr>
-        <tr><td>Google Gemini</td><td><code>gemini-2.0-flash</code></td><td><code>google-genai</code></td></tr>
-      </table>
-      <p>The function detects provider type automatically and loads its SDK lazily.</p>
+      <p>Logs are stored in <code>result["logs"]</code> as a list of messages.</p>
     </section>
 
     <section id="faq">
-      <h2>FAQ</h2>
-      <h3>Do I need to install dependencies manually?</h3>
-      <p>No. The library auto-installs missing ones at runtime.</p>
-      <h3>Can I use it with local/offline models?</h3>
-      <p>Currently, only cloud APIs (Gemini, Groq, OpenAI) are supported.</p>
-      <h3>Does it modify the original DataFrame?</h3>
-      <p>No, it only registers it temporarily in DuckDB for query execution.</p>
-      <h3>Can I format the HTML output?</h3>
-      <p>Yes — the <code>html_output</code> is safe to embed in any web app or notebook renderer.</p>
+      <h2>🧩 FAQ</h2>
+      <p><b>Q:</b> Does it modify my DataFrame?<br><b>A:</b> No, it registers it temporarily in DuckDB for querying.</p>
+      <p><b>Q:</b> Can it work offline?<br><b>A:</b> Not yet — all providers are cloud APIs.</p>
+      <p><b>Q:</b> Do I need to install dependencies manually?<br><b>A:</b> No, Talking Data installs them automatically when needed.</p>
+      <p><b>Q:</b> Can I get HTML output?<br><b>A:</b> Yes, via <code>result["html_output"]</code>.</p>
     </section>
 
     <section id="changelog">
-      <h2>Changelog</h2>
-      <ul>
-        <li><strong>1.5.0</strong> — Added lazy dependency import, unified logging, and provider abstraction.</li>
-        <li><strong>1.4.0</strong> — Logs now returned in the output dictionary.</li>
-        <li><strong>1.3.0</strong> — Added Gemini and Groq support.</li>
-        <li><strong>1.0.0</strong> — Initial OpenAI-based release.</li>
-      </ul>
+      <h2>🔁 Version History</h2>
+      <table>
+        <tr><th>Version</th><th>Highlights</th></tr>
+        <tr><td>0.9.0</td><td>Improved logging, response behaviour</td></tr>
+        <tr><td>0.8.0</td><td>Internal performance upgrades</td></tr>
+        <tr><td>0.7.0</td><td>Enhanced summarization accuracy</td></tr>
+        <tr><td>0.5.0</td><td>Added lazy import and unified provider handling</td></tr>
+        <tr><td>0.3.0</td><td>Added Gemini and Groq support</td></tr>
+        <tr><td>0.0.0</td><td>Initial OpenAI-only release</td></tr>
+      </table>
     </section>
 
     <section id="license">
-      <h2>License</h2>
+      <h2>🪪 License</h2>
       <pre><button class="copy">Copy</button><code class="language-text">MIT License
 
-Copyright (c)
+Copyright (2025)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the “Software”), to deal
+of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction...</code></pre>
+      <p class="footer">Made with ❤️ by Mohammad Abdullah · Talking Data v0.9.0 · MIT License</p>
     </section>
-
-    <p class="footer">Made with ❤️ by [Your Name] · open-analysis v1.5.0 · MIT License</p>
   </main>
 </div>
 
